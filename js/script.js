@@ -12,34 +12,29 @@ let sections = document.querySelectorAll('section');
 let navLinks = document.querySelectorAll('header nav a');
 
 window.onscroll = () => {
-          sections.forEach(sec => {
-            let top = window.scrollY;
-            let offset = sec.offsetTop-150;
-            let height = sec.offsetHeight;
-            let id=sec.getAttribute('id');
+  sections.forEach(sec => {
+    let top = window.scrollY;
+    let offset = sec.offsetTop - 150;
+    let height = sec.offsetHeight;
+    let id = sec.getAttribute('id');
 
+    if (top >= offset && top < offset + height) {
+      navLinks.forEach(link => link.classList.remove('active'));
+      document
+        .querySelector(`header nav a[href*="${id}"]`)
+        .classList.add('active');
+    }
+  });
 
-            if(top>=offset && top<offset +height) {
-                navLinks.forEach(links =>{
-                      links.classList.remove('active');
-                      document.querySelector('header nav a[href*='+ id +']').classList.add('active');
-                });
-            };
-          });
-
-
-
-let header= document.querySelector('header');
-
- header.classList.toggle('sticky',window.scrollY>100);
+  let header = document.querySelector('header');
+  header.classList.toggle('sticky', window.scrollY > 100);
 
   menuIcon.classList.remove('bx-x');
   navbar.classList.remove('active');
-
 };
+
 /*==================== scroll reveal ====================*/
 ScrollReveal({
- // reset: true,
   distance: '80px',
   duration: 2000,
   delay: 200
@@ -50,21 +45,21 @@ ScrollReveal().reveal('.home-img, .services-container, .portfolio-box, .contact 
 ScrollReveal().reveal('.home-content h1, .about-img', { origin: 'left' });
 ScrollReveal().reveal('.home-content p, .about-content', { origin: 'right' });
 
-
 /*==================== typed js ====================*/
-const typed = new Typed('.multiple-text', {
-  strings: ['Full Stack Developer 💻',
+new Typed('.multiple-text', {
+  strings: [
+    'Full Stack Developer 💻',
     'Cloud Engineer ☁️',
-    'Content Creator 🎥'],
+    'Content Creator 🎥'
+  ],
   typeSpeed: 100,
   backSpeed: 150,
   startDelay: 1000,
-  smartBackspace: false, // 🔹 Forces full erase
   backDelay: 700,
   loop: true
 });
 
-
+/*==================== CONTACT FORM (MONGO + EMAIL) ====================*/
 const contactForm = document.getElementById("contactForm");
 
 contactForm.addEventListener("submit", async (e) => {
@@ -79,7 +74,8 @@ contactForm.addEventListener("submit", async (e) => {
   };
 
   try {
-    const response = await fetch(
+    /* 1️⃣ SAVE TO MONGODB (BACKEND) */
+    const dbResponse = await fetch(
       "https://finalone-1-1ocw.onrender.com/api/contact",
       {
         method: "POST",
@@ -88,16 +84,29 @@ contactForm.addEventListener("submit", async (e) => {
       }
     );
 
-    const result = await response.json();
+    const dbResult = await dbResponse.json();
 
-    if (result.success) {
-      alert("Message sent successfully ✅");
-      contactForm.reset();
-    } else {
-      alert(result.message || "Failed to send message ❌");
+    if (!dbResult.success) {
+      alert("Failed to save message ❌");
+      return;
     }
+
+    /* 2️⃣ SEND EMAIL (FORMSPREE) */
+    await fetch("https://formspree.io/f/xeeqwdnv", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(data),
+    });
+
+    /* 3️⃣ SUCCESS */
+    alert("Message sent successfully ✅");
+    contactForm.reset();
+
   } catch (error) {
-    alert("Something went wrong. Try again later.");
     console.error(error);
+    alert("Something went wrong. Try again later.");
   }
 });
