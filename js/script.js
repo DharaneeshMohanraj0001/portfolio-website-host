@@ -79,26 +79,25 @@ contactForm.addEventListener("submit", async (e) => {
   };
 
   try {
-  const response = await fetch(
-    "https://finalone-1-1ocw.onrender.com/api/contact",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
+    const response = await fetch(
+      "https://finalone-1-1ocw.onrender.com/api/contact",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      }
+    );
+
+    const result = await response.json();
+
+    if (result.success) {
+      alert("Message sent successfully ✅");
+      contactForm.reset();
+    } else {
+      alert(result.message || "Failed to send message ❌");
     }
-  );
-
-  const result = await response.json();
-
-  if (result.success) {
-    alert("Message sent successfully ✅");
-    contactForm.reset();
-  } else {
-    alert(result.message || "Failed to send message ❌");
+  } catch (error) {
+    alert("Something went wrong. Try again later.");
+    console.error(error);
   }
-} catch (error) {
-  alert("Something went wrong. Try again later.");
-  console.error(error);
-}
+});
