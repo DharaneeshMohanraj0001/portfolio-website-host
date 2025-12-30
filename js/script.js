@@ -63,6 +63,8 @@ const typed = new Typed('.multiple-text', {
   backDelay: 700,
   loop: true
 });
+
+
 const contactForm = document.getElementById("contactForm");
 
 contactForm.addEventListener("submit", async (e) => {
@@ -98,4 +100,3 @@ contactForm.addEventListener("submit", async (e) => {
     console.error(error);
   }
 });
-
