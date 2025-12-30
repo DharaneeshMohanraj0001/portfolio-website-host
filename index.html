@@ -165,11 +165,12 @@ My design style blends creativity with simplicity — making your brand stand ou
     <div class="portfolio-box">
       <img src="images/portfolio4.jpg" alt="">
       <div class="portfolio-layer">
-        <h4>Diabetes Disease Prediction</h4>
+        <h4>Crop Disease Identifier (AI)</h4>
         <p>
-          Diabetes is a chronic disease that occurs when the body cannot effectively use or produce insulin, leading to high blood sugar levels. Early prediction of diabetes helps in proper treatment and prevention of complications. 
+          A machine learning project using CNN to identify crop diseases from images 
+          with a simple web interface built using Flask.
         </p>
-        <a href="machine learning lab/Diabetespredictt.ipynb" target="_blank">
+        <a href="https://github.com/yourusername/crop-disease-identifier" target="_blank">
           <i class='bx bx-link'></i>
         </a>
       </div>
@@ -184,7 +185,7 @@ My design style blends creativity with simplicity — making your brand stand ou
           A K-Means clustering project analyzing customer purchase patterns 
           to identify segments for targeted marketing.
         </p>
-        <a href="https://github.com/DharaneeshMohanraj0001/Customer-Segmentation-KMeans-CodeClause.git" target="_blank">
+        <a href="https://github.com/yourusername/customer-segmentation" target="_blank">
           <i class='bx bx-link'></i>
         </a>
       </div>
@@ -198,7 +199,7 @@ My design style blends creativity with simplicity — making your brand stand ou
           A data-driven forecasting model using machine learning to predict 
           future product demand trends accurately.
         </p>
-        <a href="https://github.com/DharaneeshMohanraj0001/Retail_foreccasting_dharan.git" target="_blank">
+        <a href="https://github.com/yourusername/demand-forecasting" target="_blank">
           <i class='bx bx-link'></i>
         </a>
       </div>
@@ -220,10 +221,11 @@ My design style blends creativity with simplicity — making your brand stand ou
     <section class="contact" id="contact">
   <h2 class="heading">Contact <span>Me! for any queries</span></h2>
 
-  <form action="#">
+  <form id="contactForm">
+
     <div class="input-box">
-      <input type="text" placeholder="Full Name" required>
-      <input type="email" placeholder="Official Email Address" required>
+      <input type="text" id="name" placeholder="Full name"  required>
+      <input type="email" id="email" placeholder="Official Email Address" required>
     </div>
 
     <div class="input-box">
@@ -234,11 +236,11 @@ My design style blends creativity with simplicity — making your brand stand ou
         maxlength="10" 
         required 
         oninput="this.value = this.value.replace(/[^0-9]/g, '')">
-      <input type="text" placeholder="Email Subject" required>
+      <input type="text" id="subject" placeholder="User Subject" required>
     </div>
 
-    <textarea cols="30" rows="10" placeholder="Drop Your Message" required></textarea>
-    <input type="submit" value="Send Message" class="btn">
+    <textarea cols="30" rows="10" id="message" placeholder="Drop Your Message" required></textarea>
+    <button type="submit"  value="Send Message" class="btn">
   </form>
 </section>
 
