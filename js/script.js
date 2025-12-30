@@ -79,7 +79,7 @@ contactForm.addEventListener("submit", async (e) => {
   };
 
   try {
-  const response = await fetch("https://finalone-nv93.onrender.com/api/contact", {
+  const response = await fetch("https://finalone-1-1ocw.onrender.com", {
 
       method: "POST",
       headers: {
@@ -100,3 +100,4 @@ contactForm.addEventListener("submit", async (e) => {
     console.error(error);
   }
 });
+
