@@ -218,30 +218,65 @@ My design style blends creativity with simplicity — making your brand stand ou
 
     <!-- contact section design -->
 
-  <section class="contact" id="contact">
+ <form 
+  id="contactForm"
+  action="https://formspree.io/f/XXXXXXXX"
+  method="POST"
+>
+
+<section class="contact" id="contact">
   <h2 class="heading">Contact <span>Me! for any queries</span></h2>
 
-  <form id="contactForm">
+  <form
+    id="contactForm"
+    action="https://formspree.io/f/xeeqwdnv"
+    method="POST"
+  >
+
     <div class="input-box">
-      <input type="text" id="name" placeholder="Full name" required>
-      <input type="email" id="email" placeholder="Official Email Address" required>
+      <input
+        type="text"
+        name="name"
+        placeholder="Full name"
+        required
+      >
+
+      <input
+        type="email"
+        name="email"
+        placeholder="Official Email Address"
+        required
+      >
     </div>
 
     <div class="input-box">
-      <input 
-        type="tel" 
-        id="mobile" 
-        placeholder="Mobile Number" 
-        maxlength="10" 
+      <input
+        type="tel"
+        name="mobile"
+        placeholder="Mobile Number"
+        maxlength="10"
         required
         oninput="this.value = this.value.replace(/[^0-9]/g, '')"
       >
-      <input type="text" id="subject" placeholder="User Subject" required>
+
+      <input
+        type="text"
+        name="subject"
+        placeholder="User Subject"
+        required
+      >
     </div>
 
-    <textarea id="message" cols="30" rows="10" placeholder="Drop Your Message" required></textarea>
+    <textarea
+      name="message"
+      cols="30"
+      rows="10"
+      placeholder="Drop Your Message"
+      required
+    ></textarea>
 
     <button type="submit" class="btn">Send Message</button>
+
   </form>
 </section>
 
@@ -270,6 +305,7 @@ My design style blends creativity with simplicity — making your brand stand ou
     <script src="js/script.js"></script>
   </body>
 </html>
+
 
 
 
