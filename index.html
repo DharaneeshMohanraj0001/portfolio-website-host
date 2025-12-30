@@ -218,13 +218,12 @@ My design style blends creativity with simplicity — making your brand stand ou
 
     <!-- contact section design -->
 
-    <section class="contact" id="contact">
+  <section class="contact" id="contact">
   <h2 class="heading">Contact <span>Me! for any queries</span></h2>
 
   <form id="contactForm">
-
     <div class="input-box">
-      <input type="text" id="name" placeholder="Full name"  required>
+      <input type="text" id="name" placeholder="Full name" required>
       <input type="email" id="email" placeholder="Official Email Address" required>
     </div>
 
@@ -234,15 +233,18 @@ My design style blends creativity with simplicity — making your brand stand ou
         id="mobile" 
         placeholder="Mobile Number" 
         maxlength="10" 
-        required 
-        oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+        required
+        oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+      >
       <input type="text" id="subject" placeholder="User Subject" required>
     </div>
 
-    <textarea cols="30" rows="10" id="message" placeholder="Drop Your Message" required></textarea>
-    <button type="submit"  value="Send Message" class="btn">
+    <textarea id="message" cols="30" rows="10" placeholder="Drop Your Message" required></textarea>
+
+    <button type="submit" class="btn">Send Message</button>
   </form>
 </section>
+
 
 
     <!-- footer design -->
@@ -268,6 +270,7 @@ My design style blends creativity with simplicity — making your brand stand ou
     <script src="js/script.js"></script>
   </body>
 </html>
+
 
 
 
