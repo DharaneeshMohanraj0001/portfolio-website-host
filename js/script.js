@@ -60,6 +60,7 @@ new Typed('.multiple-text', {
 });
 
 /*==================== CONTACT FORM (MONGO + EMAIL) ====================*/
+/*==================== CONTACT FORM ====================*/
 const contactForm = document.getElementById("contactForm");
 
 contactForm.addEventListener("submit", async (e) => {
@@ -91,17 +92,23 @@ contactForm.addEventListener("submit", async (e) => {
       return;
     }
 
-    /* 2️⃣ SEND EMAIL (FORMSPREE) */
-    await fetch("https://formspree.io/f/xeeqwdnv", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify(data),
+    /* 2️⃣ EMAIL NOTIFICATION TO YOU */
+    await emailjs.send("service_jv592qa", "template_uxb3c4r", {
+      name: data.name,
+      email: data.email,
+      mobile: data.mobile,
+      subject: data.subject,
+      message: data.message,
     });
 
-    /* 3️⃣ SUCCESS */
+    /* 3️⃣ AUTO-REPLY TO USER */
+    await emailjs.send("service_jv592qa", "template_idzo60o", {
+      name: data.name,
+      email: data.email,
+      message: data.message,
+    });
+
+    /* 4️⃣ SUCCESS */
     alert("Message sent successfully ✅");
     contactForm.reset();
 
@@ -110,3 +117,4 @@ contactForm.addEventListener("submit", async (e) => {
     alert("Something went wrong. Try again later.");
   }
 });
+
